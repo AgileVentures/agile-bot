@@ -41,7 +41,7 @@ makeRequest = (routes_functions, type, project, done) ->
 mockSlackHangoutNotify = (routes_functions, channel, type, project) ->
   text = if type == "Scrum" || channel == 'C02A6835V' then '@here undefined: undefined' else 'undefined: undefined'
   nock('https://api.gitter.im')
-    .get('/v1/rooms/55e42db80fc9f982beaf2725/chatMessages')
+    .get('/v1/rooms/56b8bdffe610378809c070cc/chatMessages')
     .reply(200, [])
   nock("https://api.gitter.im")
     .post("/v1/rooms/56b8bdffe610378809c070cc/chatMessages")
