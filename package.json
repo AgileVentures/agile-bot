@@ -40,6 +40,7 @@
     "sepia": "^2.0.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/jasmine ENABLE_ROLLBAR=false GITTER_API_TOKEN=101010"
+    "test": "./node_modules/.bin/jasmine --random=true ENABLE_ROLLBAR=false GITTER_API_TOKEN=101010",
+    "debug": "ENABLE_ROLLBAR=false GITTER_API_TOKEN=101010 node debug node_modules/.bin/jasmine"
   }
 }

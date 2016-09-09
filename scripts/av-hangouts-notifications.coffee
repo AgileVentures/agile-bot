@@ -108,7 +108,6 @@ module.exports = (robot) ->
 # host_name = Random Guy
 # host_avatar = https://www.gravatar.com/avatar/fsd87fgds87f4387
     user = name: req.body.host_name, avatar: req.body.host_avatar
-
     if req.body.type == "Scrum"
       send_slack_message CHANNELS.general, "Video/Livestream for #{req.body.title}: #{req.body.video}", user
     else if req.body.type == "PairProgramming"
