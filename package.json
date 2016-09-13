@@ -21,13 +21,13 @@
     "url": "https://github.com/sampritipanda/agile-bot.git"
   },
   "dependencies": {
-    "cleverbot-node": ">= 0.1.1",
-    "hubot": "*",
-    "hubot-scripts": "*",
-    "hubot-slack": "^3.3.0",
-    "redis": "*",
-    "request": "*",
-    "rollbar": "*"
+    "cleverbot-node": "<= 0.2.2",
+    "hubot": "<= 2.19.0",
+    "hubot-scripts": "<= 2.17.2",
+    "hubot-slack": "<= 3.4.2",
+    "redis": "<= 2.6.2",
+    "request": "<= 2.74.0",
+    "rollbar": "0.6.2"
   },
   "engines": {
     "node": ">= 0.8.x",
