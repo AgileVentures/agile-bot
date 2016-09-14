@@ -26,7 +26,7 @@ module.exports = (robot) ->
     return id for own trigger, id of CHANNELS when name.match(new RegExp(trigger))
 
   send_gitter_message_avoid_repeats = (channel, message) ->
-    request.get "https://api.gitter.im/v1/rooms/#{GITTER_ROOMS['saasbook/MOOC']}/chatMessages",
+    request.get "https://api.gitter.im/v1/rooms/#{GITTER_ROOMS['saasbook/AV102']}/chatMessages",
       auth:
         bearer: process.env.GITTER_API_TOKEN
     , (error, response, body) ->
@@ -36,7 +36,7 @@ module.exports = (robot) ->
         send_gitter_message(channel, message)
 
   send_gitter_message = (channel, message) ->
-    request.post "https://api.gitter.im/v1/rooms/#{GITTER_ROOMS['saasbook/MOOC']}/chatMessages",
+    request.post "https://api.gitter.im/v1/rooms/#{GITTER_ROOMS['AgileVentures/agile-bot']}/chatMessages",
       form:
         text: message
       auth:
