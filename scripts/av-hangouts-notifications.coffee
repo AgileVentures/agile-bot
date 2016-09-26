@@ -36,7 +36,7 @@ module.exports = (robot) ->
         send_gitter_message(channel, message)
 
   send_gitter_message = (channel, message) ->
-    request.post "https://api.gitter.im/v1/rooms/#{GITTER_ROOMS['AgileVentures/agile-bot']}/chatMessages",
+    request.post "https://api.gitter.im/v1/rooms/#{GITTER_ROOMS['saasbook/MOOC']}/chatMessages",
       form:
         text: message
       auth:
