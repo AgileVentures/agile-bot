@@ -43,6 +43,7 @@ module.exports = (robot) ->
             body: body
 
   robot.router.post "/hubot/sentry-notify/:room", (req, res) ->
+    # Request body sent from Sentry:
     # {
     #   "id": "27379932",
     #   "project": "project-slug",
