@@ -1,5 +1,5 @@
 # Description:
-#   Posts Hangouts Notifications from AgileVentures to Slack and Gitter.
+#   Posts Sentry Notifications from Any Application to Slack.
 #
 # Dependencies:
 #   "requestify": "*"
@@ -7,11 +7,42 @@
 # Configuration:
 #
 # Commands:
-#   post hangout title, link and type to /hubot/hangouts-notify
-#   post hangout title, video_lin and type to /hubot/hangouts-video-notify
+#   post sentry_object to /hubot/sentry-notify/:room
+#        In the URL :room should be updated with the room the notification is sent to
+#        An example of the JSON Object sent by Sentry:
+# {
+#   "id": "27379932",
+#   "project": "project-slug",
+#   "project_name": "Project Name",
+#   "culprit": "raven.scripts.runner in main",
+#   "level": "error",
+#   "url": "https://app.getsentry.com/getsentry/project-slug/group/27379932/",
+#   "checksum": "c4a4d06bc314205bb3b6bdb612dde7f1",
+#   "logger": "root",
+#   "message": "This is an example Python exception",
+#   "event": {
+#     "extra": {},
+#     "sentry.interfaces.Stacktrace": {
+#       "frames": [
+#         {
+#           // stacktrace information
+#         }
+#       ]
+#     },
+#     "tags": [
+#       ["foo", "bar"],
+#     ],
+#     "sentry.interfaces.User": {
+#       // user information
+#     },
+#     "sentry.interfaces.Http": {
+#       // HTTP request information
+#     }
+#   }
+# }
 #
 # Author:
-#   sampritipanda
+#   joaopapereira
 
 
 [CHANNELS, GITTER_ROOMS] = require('./../config/' + process.env.LIVE_ENV + '.coffee')
@@ -43,37 +74,6 @@ module.exports = (robot) ->
             body: body
 
   robot.router.post "/hubot/sentry-notify/:room", (req, res) ->
-    # Request body sent from Sentry:
-    # {
-    #   "id": "27379932",
-    #   "project": "project-slug",
-    #   "project_name": "Project Name",
-    #   "culprit": "raven.scripts.runner in main",
-    #   "level": "error",
-    #   "url": "https://app.getsentry.com/getsentry/project-slug/group/27379932/",
-    #   "checksum": "c4a4d06bc314205bb3b6bdb612dde7f1",
-    #   "logger": "root",
-    #   "message": "This is an example Python exception",
-    #   "event": {
-    #     "extra": {},
-    #     "sentry.interfaces.Stacktrace": {
-    #       "frames": [
-    #         {
-    #           // stacktrace information
-    #         }
-    #       ]
-    #     },
-    #     "tags": [
-    #       ["foo", "bar"],
-    #     ],
-    #     "sentry.interfaces.User": {
-    #       // user information
-    #     },
-    #     "sentry.interfaces.Http": {
-    #       // HTTP request information
-    #     }
-    #   }
-    # }
     user = name: "Sentry Bot", avatar: ""
     room = req.params.room
     send_slack_message room, "@here #{req.body.project_name}: #{req.body.level} - #{req.body.message}", user
