@@ -22,26 +22,6 @@ mockSlackHangoutNotify = (channel, text) ->
       error: 'not_authed'
     })
 
-makeRequest = (body, done) ->
-  postData = JSON.stringify(body)
-  options =
-    hostname: 'localhost'
-    port: process.env.EXPRESS_PORT
-    path: '/hubot/sentry-notify/my-room'
-    method: 'POST'
-    headers:
-      'Content-Type': 'application/x-www-form-urlencoded'
-      'Content-Length': Buffer.byteLength(postData)
-  req = http.request(options, (@response) => done()
-  )
-  req.on 'error', (e) ->
-    console.log 'problem with request: ' + e
-    return
-  # write data to request body
-  req.write postData
-  req.end()
-
-
 describe 'E2E - Sentry Integration', ->
   beforeEach ->
     @room = helper.createRoom()
