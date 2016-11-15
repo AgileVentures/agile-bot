@@ -15,7 +15,6 @@
 
 
 [CHANNELS, GITTER_ROOMS] = require('./../config/' + process.env.LIVE_ENV + '.coffee')
-console.log(process.env.LIVE_ENV)
 
 request = require('request')
 rollbar = require('rollbar')
