@@ -89,12 +89,11 @@ module.exports = (robot) ->
 
       if room == CHANNELS.cs169
         send_gitter_message_avoid_repeats room, "[#{req.body.title} with #{user.name}](#{req.body.link}) is starting NOW!"
-        send_slack_message CHANNELS.cs169, "@here #{req.body.title}: #{req.body.link}",user
       else
         send_slack_message CHANNELS.general, "#{req.body.title}: #{req.body.link}", user
 
         send_slack_message CHANNELS.pairing_notifications, "@channel #{req.body.title}: #{req.body.link}", user
-        send_slack_message room, "@here #{req.body.title}: #{req.body.link}", user
+      send_slack_message room, "@here #{req.body.title}: #{req.body.link}", user
 
 
     # Send back an empty response
