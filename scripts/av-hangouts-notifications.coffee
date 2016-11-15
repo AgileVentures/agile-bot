@@ -15,6 +15,7 @@
 
 
 [CHANNELS, GITTER_ROOMS] = require('./../config/' + process.env.LIVE_ENV + '.coffee')
+console.log(process.env.LIVE_ENV)
 
 request = require('request')
 rollbar = require('rollbar')
@@ -89,6 +90,7 @@ module.exports = (robot) ->
 
       if room == CHANNELS.cs169
         send_gitter_message_avoid_repeats room, "[#{req.body.title} with #{user.name}](#{req.body.link}) is starting NOW!"
+        send_slack_message CHANNELS.cs169, "@here #{req.body.title}: #{req.body.link}",user
       else
         send_slack_message CHANNELS.general, "#{req.body.title}: #{req.body.link}", user
 

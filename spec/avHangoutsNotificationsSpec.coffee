@@ -1,4 +1,5 @@
 nock = require('nock');
+nock.disableNetConnect();
 avHangoutsNotifications = require('../scripts/av-hangouts-notifications.coffee')
 
 makeRequest = (routes_functions, type, project, done) ->
@@ -13,7 +14,7 @@ makeRequest = (routes_functions, type, project, done) ->
   ), 2
 
 mockSlackHangoutNotify = (routes_functions, channel, type, project) ->
-  text = if type == "Scrum" || channel == 'C02A6835V' then '@here undefined: undefined' else 'undefined: undefined'
+  text = if type == "Scrum" || channel == 'C29J4CYA2' then '@here undefined: undefined' else 'undefined: undefined'
   nock('https://api.gitter.im')
     .get('/v1/rooms/56b8bdffe610378809c070cc/chatMessages')
     .reply(200, [])
@@ -61,7 +62,7 @@ describe 'AV Hangout Notifications', ->
 
   describe 'hangouts-notify for pair programming on cs169', ->
     beforeEach (done) ->
-      @slack = mockSlackHangoutNotify(@routes_functions, 'C02A6835V', 'PairProgramming', 'cs169', done)
+      @slack = mockSlackHangoutNotify(@routes_functions, 'C29J4CYA2', 'PairProgramming', 'cs169', done)
       makeRequest(@routes_functions, 'PairProgramming', 'cs169', done)
 
     it 'should not post hangout link to mooc channel on slack', (done) ->
