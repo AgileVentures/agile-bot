@@ -1,3 +1,3 @@
 require('coffee-script/register');
 
-process.env.LIVE_ENV = 'staging'
+process.env.LIVE_ENV = 'test'

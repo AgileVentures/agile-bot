@@ -93,7 +93,7 @@ module.exports = (robot) ->
         send_slack_message CHANNELS.general, "#{req.body.title}: #{req.body.link}", user
 
         send_slack_message CHANNELS.pairing_notifications, "@channel #{req.body.title}: #{req.body.link}", user
-        send_slack_message room, "@here #{req.body.title}: #{req.body.link}", user
+      send_slack_message room, "@here #{req.body.title}: #{req.body.link}", user
 
 
     # Send back an empty response
