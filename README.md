@@ -27,8 +27,6 @@ Press Ctrl + C to leave debug repl
   post: [Function] }
 ```
 
-AgileBot uses Rollbar for error tracking:
-
-<a href="https://rollbar.com"><img src="https://rollbar.com/assets/badges/rollbar-partner-badge-dark.png" alt="Rollbar Error Tracking" /></a>
+# AgileBot uses Rollbar for error tracking:
 
 <a href="https://rollbar.com"><img src="https://rollbar.com/assets/badges/rollbar-partner-badge-light.png" alt="Rollbar Error Tracking" /></a>
