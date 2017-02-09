@@ -5,6 +5,19 @@ Agile Bot takes requests to notify Slack and Gitter about pairing hangouts and y
 
 Note that it relies on having a LIVE_ENV variable set that will indicate which channels to hit - that LIVE_ENV var should be set to 'production' or 'staging'.
 
+To install:
+
+```
+npm install
+```
+
+To run the test suite use:
+
+```
+npm test
+```
+
+
 To do rudimentary debugging, put debugger in the code where you wish to stop and debug, and run
 
 ```
