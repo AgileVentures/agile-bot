@@ -88,12 +88,14 @@ module.exports = (robot) ->
       room = find_project_for_hangout(req.body.project)
 
       if room == CHANNELS.cs169
+        console.log('sending PP event to gitter: ' + room)
         send_gitter_message_avoid_repeats room, "[#{req.body.title} with #{user.name}](#{req.body.link}) is starting NOW!"
       else
         send_slack_message CHANNELS.general, "#{req.body.title}: #{req.body.link}", user
 
         send_slack_message CHANNELS.pairing_notifications, "@channel #{req.body.title}: #{req.body.link}", user
-        send_slack_message room, "@here #{req.body.title}: #{req.body.link}", user
+      console.log('sending PP event to slack: ' + room)
+      send_slack_message room, "@here #{req.body.title}: #{req.body.link}", user
 
 
     # Send back an empty response
