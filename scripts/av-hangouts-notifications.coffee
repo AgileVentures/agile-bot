@@ -81,11 +81,12 @@ module.exports = (robot) ->
 # host_avatar = https://www.gravatar.com/avatar/fsd87fgds87f4387
     user = name: req.body.host_name, avatar: req.body.host_avatar
 
+    room = find_project_for_hangout(req.body.project)
     if req.body.type == "Scrum"
       send_slack_message CHANNELS.general, "@here #{req.body.title}: #{req.body.link}", user
       send_slack_message CHANNELS.standup_notifications, "@channel #{req.body.title}: #{req.body.link}", user
     else if req.body.type == "PairProgramming"
-      room = find_project_for_hangout(req.body.project)
+
 
       if room == CHANNELS.cs169
         console.log('sending PP event to gitter: ' + room)
@@ -95,6 +96,9 @@ module.exports = (robot) ->
 
         send_slack_message CHANNELS.pairing_notifications, "@channel #{req.body.title}: #{req.body.link}", user
       console.log('sending PP event to slack: ' + room)
+
+    # send all types of events to associated project "room" if there is one
+    if room
       send_slack_message room, "@here #{req.body.title}: #{req.body.link}", user
 
 
